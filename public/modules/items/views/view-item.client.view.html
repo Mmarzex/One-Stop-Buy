@@ -3,7 +3,7 @@
 		<h1 data-ng-bind="item.name"></h1>
 	</div>
 	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == item.user._id))">
-		<a class="btn btn-primary" href="/#!/items/{{item._id}}/edit">
+		<a class="btn btn-primary" href="/#!/items/{{item.id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
 		</a>
 		<a class="btn btn-primary" data-ng-click="remove();">
@@ -18,4 +18,13 @@
 			<span data-ng-bind="item.user.displayName"></span>
 		</em>
 	</small>
+	<h3 data-ng-bind="item.description"></h3>
+	Price: <h4 data-ng-bind="item.price"></h4>
+	Stock: <h4 data-ng-bind="item.stock"></h4>
+	<div class="form-group">
+		<label class="control-label" for="bid">Bid</label>
+		<div class="controls">
+		<input type="text" data-ng-model="bid" id="bid" class="form-control" placeholder="Bid" required>
+		</div>
+	</div>
 </section>
