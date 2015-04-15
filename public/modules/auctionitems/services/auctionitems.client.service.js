@@ -7,6 +7,9 @@ angular.module('auctionitems').factory('Auctionitems', ['$resource',
 		}, {
 			update: {
 				method: 'PUT'
+			},
+			bid: {
+				method: 'PUT'
 			}
 		});
 	}

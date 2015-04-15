@@ -71,6 +71,7 @@ angular.module('auctionitems').controller('AuctionitemsController', ['$scope', '
 
 		$scope.bid = function(bid) {
 			var bidder = $scope.authentication.user.username;
+			console.log(Auctionitems)
 			console.log("Bidder", bidder);
 			var auctionitem = $scope.auctionitem;
 			console.log(auctionitem);
