@@ -1,0 +1,59 @@
+<section data-ng-controller="AuctionitemsController" data-ng-init="findOne()">
+    <div class="page-header">
+        <h1>Edit Auctionitem</h1>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="update()" novalidate>
+            <fieldset>
+                <div class="form-group">
+                    <label class="control-label" for="name">Name</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="auctionitem.name" id="name" class="form-control" placeholder="Name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="description">description</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="auctionitem.description" id="description" class="form-control" placeholder="description" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="location">location</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="auctionitem.location" id="location" class="form-control" placeholder="location" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="buyer_name">buyer_name</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="auctionitem.buyer_name" id="buyer_name" class="form-control" placeholder="buyer_name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="current_bid">current_bid</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="auctionitem.current_bid" id="current_bid" class="form-control" placeholder="current_bid" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="buy_it_now">buy_it_now</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="auctionitem.buy_it_now" id="buy_it_now" class="form-control" placeholder="buy_it_now" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="reserve_price">reserve_price</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="auctionitem.reserve_price" id="reserve_price" class="form-control" placeholder="reserve_price" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-default">
+                </div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+            </fieldset>
+        </form>
+    </div>
+</section>

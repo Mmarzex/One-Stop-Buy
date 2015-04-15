@@ -1,0 +1,30 @@
+<section data-ng-controller="AuctionitemsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="auctionitem.name"></h1>
+	</div>
+	<h5>Description: </h5>
+	<h6 data-ng-bind="auctionitem.description"></h6>
+	<div class="input-group">
+	<span class="input-group-addon">$</span>
+	<input type="text" class="form-control" ng-model="new_bid" id="submit_bid" placeholder="0.00">
+	<span class="input-group-btn">
+		<button class="btn btn-primary" type="button" data-ng-click="bid(new_bid);">Bid Now!</button>
+	</span>
+	</div>
+	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user.username == auctionitem.buyer_name))">
+		<a class="btn btn-primary" href="/#!/auctionitems/{{auctionitem.id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<small>
+		<em class="text-muted">
+			Posted on
+			<span data-ng-bind="auctionitem.created | date:'mediumDate'"></span>
+			by
+			<span data-ng-bind="auctionitem.buyer_name"></span>
+		</em>
+	</small>
+</section>
