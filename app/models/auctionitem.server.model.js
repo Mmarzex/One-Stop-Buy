@@ -22,7 +22,8 @@ var schema = db.schema;
  	buy_it_now: Sequelize.FLOAT,
  	reserve_price: Sequelize.FLOAT,
  	image: Sequelize.STRING,
- 	category: Sequelize.STRING
+ 	category: Sequelize.STRING,
+ 	auction_ended: Sequelize.BOOLEAN
 // },
 // {
 // 	associate: function(models) {
@@ -40,7 +41,8 @@ var schema = db.schema;
  		current_bid: 0.0,
  		buy_it_now: 69.69,
  		reserve_price: 69.69,
- 		image: "http://i.imgur.com/6XAJI6V.jpg"
+ 		image: "http://i.imgur.com/6XAJI6V.jpg",
+ 		auction_ended: false
  	});
  });
 

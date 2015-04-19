@@ -14,7 +14,7 @@ angular.module('searches').config(['$stateProvider',
 			templateUrl: 'modules/searches/views/create-search.client.view.html'
 		}).
 		state('viewSearch', {
-			url: '/searches/:searchId',
+			url: '/searches/test',
 			templateUrl: 'modules/searches/views/view-search.client.view.html'
 		}).
 		state('editSearch', {

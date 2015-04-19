@@ -7,6 +7,11 @@ var _ = require('lodash'),
 	mongoose = require('mongoose'),
 	User = mongoose.model('User');
 
+var db = require('../../../config/sequelize'),
+	sequelize = db.sequelize,
+	schema = db.schema,
+	OneStopShopper = schema.OneStopShopper;
+
 /**
  * User middleware
  */
@@ -52,3 +57,16 @@ exports.hasAuthorization = function(roles) {
 		});
 	};
 };
+
+/**
+* Check for if user is OneStopShopper
+**/
+exports.isOnestopshopper = function(req, res) {
+	var username = req.user.username;
+	OneStopShopper.find({where: {username: username}}).success(function(onestopshopper){
+		if(!onestopshopper) return new Error('User is not a onestopshopper');
+		return res.jsonp("{message: User is a OneStopShopper}");
+	}).error(function(err){
+		res.jsonp(err);
+	});
+}

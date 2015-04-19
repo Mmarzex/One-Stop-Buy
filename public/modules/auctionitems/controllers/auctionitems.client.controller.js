@@ -17,7 +17,8 @@ angular.module('auctionitems').controller('AuctionitemsController', ['$scope', '
 			 	reserve_price: this.reserve_price,
 			 	auction_ended: this.auction_ended,
 			 	image: this.image,
-			 	category: this.category
+			 	category: this.category,
+			 	auction_ended: this.auction_ended
 			});
 
 			// Redirect after save

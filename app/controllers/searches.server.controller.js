@@ -24,11 +24,11 @@ exports.create = function(req, res) {
 	AuctionItem.findAll({where: {name: {like: searchString}}}).success(function(auctionitems){
 		console.log("Results of search");
 		console.log(auctionitems);
+		// res.search = auctionitems;
 		res.jsonp(auctionitems);
 	}).error(function(err){
 		res.jsonp(err);
 	});
-
 	// var search = new Search(req.body);
 	// search.user = req.user;
 

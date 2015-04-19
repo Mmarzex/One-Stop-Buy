@@ -3,27 +3,23 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
-	Schema = mongoose.Schema;
+var Sequelize = require('sequelize'),
+	db = require('../../config/sequelize'),
+	sequelize = db.sequelize,
+	schema = db.schema;
 
 /**
  * Onestopshopper Schema
  */
-var OnestopshopperSchema = new Schema({
-	name: {
-		type: String,
-		default: '',
-		required: 'Please fill Onestopshopper name',
-		trim: true
-	},
-	created: {
-		type: Date,
-		default: Date.now
-	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
-	}
+var OneStopShopper = sequelize.define('onestopshopper', {
+	username: Sequelize.STRING,
+	startDate: Sequelize.DATE,
+	renewDate: Sequelize.DATE
 });
 
-mongoose.model('Onestopshopper', OnestopshopperSchema);
+
+OneStopShopper.sync({force: true}).then(function() {
+	console.log("OneStopShopper Schema Synced to database");
+});
+
+schema['OneStopShopper'] = OneStopShopper;

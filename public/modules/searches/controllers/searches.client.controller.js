@@ -14,8 +14,8 @@ angular.module('searches').controller('SearchesController', ['$scope', '$statePa
 
 			// Redirect after save
 			search.$save(function(response) {
-				$location.path('searches/' + response._id);
-
+				// $location.path('searches/' + response._id);
+				$location.path('searches/test')
 				// Clear form fields
 				$scope.name = '';
 			}, function(errorResponse) {

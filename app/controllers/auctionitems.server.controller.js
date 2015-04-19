@@ -149,7 +149,7 @@ exports.list = function(req, res) {
  * Auctionitem middleware
  */
 exports.auctionitemByID = function(req, res, next, id) { 
-	if(id == 'search') { id = 1 }
+	// if(id == 'search') { id = 1 }
 	AuctionItem.find({where: {id: id}}).success(function(auctionitem){
 		if(!auctionitem) return next(new Error('Failed to load auctionitem ' + id));
 		req.auctionitem = auctionitem;

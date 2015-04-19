@@ -9,12 +9,12 @@ angular.module('onestopshoppers').controller('OnestopshoppersController', ['$sco
 		$scope.create = function() {
 			// Create new Onestopshopper object
 			var onestopshopper = new Onestopshoppers ({
-				name: this.name
+				// username: this.username,
 			});
 
 			// Redirect after save
 			onestopshopper.$save(function(response) {
-				$location.path('onestopshoppers/' + response._id);
+				$location.path('onestopshoppers/' + response.id);
 
 				// Clear form fields
 				$scope.name = '';
