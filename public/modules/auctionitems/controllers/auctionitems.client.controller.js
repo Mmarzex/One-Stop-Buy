@@ -100,5 +100,14 @@ angular.module('auctionitems').controller('AuctionitemsController', ['$scope', '
 				});
 			}
 		};
+
+		$scope.search = function(searchTerm) {
+			var auctionitem = $scope.auctionitem;
+			$scope.search = searchTerm;
+			alert("Search starting");
+			auctionitem.$search(function() {
+				$location.path('asearch');
+			});
+		};
 	}
 ]);

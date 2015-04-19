@@ -14,3 +14,13 @@ angular.module('auctionitems').factory('Auctionitems', ['$resource',
 		});
 	}
 ]);
+
+// angular.module('auctionitems').factory('Auctionitems', ['$resource',
+// 	function($resource) {
+// 		return $resource('asearch',{
+// 			search: {
+// 				method: 'PUT'
+// 			}
+// 		});
+// 	}
+// ]);

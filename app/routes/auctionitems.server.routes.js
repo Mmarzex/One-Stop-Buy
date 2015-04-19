@@ -8,11 +8,13 @@ module.exports = function(app) {
 	app.route('/auctionitems')
 		.get(auctionitems.list)
 		.post(users.requiresLogin, auctionitems.create);
-
+	app.route('/asearch')
+		.get(auctionitems.search);
 	app.route('/auctionitems/:auctionitemId')
 		.get(auctionitems.read)
 		.put(users.requiresLogin, auctionitems.bid)
 		.delete(auctionitems.delete);
+	
 
 	// Finish by binding the Auctionitem middleware
 	app.param('auctionitemId', auctionitems.auctionitemByID);

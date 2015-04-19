@@ -20,6 +20,10 @@ angular.module('auctionitems').config(['$stateProvider',
 		state('editAuctionitem', {
 			url: '/auctionitems/:auctionitemId/edit',
 			templateUrl: 'modules/auctionitems/views/edit-auctionitem.client.view.html'
+		}).
+		state('searchAuctionitem', {
+			url: '/asearch',
+			templateUrl: 'modules/auctionitems/views/search-auctionitem.client.view.html'
 		});
 	}
 ]);

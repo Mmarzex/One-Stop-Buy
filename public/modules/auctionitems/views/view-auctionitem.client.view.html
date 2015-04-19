@@ -22,6 +22,12 @@
 		<button class="btn btn-primary" type="button" data-ng-click="bid(new_bid);">Bid Now!</button>
 	</span>
 	</div>
+	<div class="input-group">
+	<input type="text" class="form-control" ng-model="searchTerm" id="submit_search" placeholder=" ">
+	<span class="input-group-btn">
+		<button class="btn btn-primary" type="button" data-ng-click="search(searchTerm);">Search!</button>
+	</span>
+	</div>
 	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user.username == auctionitem.buyer_name))">
 		<a class="btn btn-primary" href="/#!/auctionitems/{{auctionitem.id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>

@@ -77,6 +77,9 @@ exports.update = function(req, res) {
 	});
 };
 
+/**
+* Bid on an Auctionitem
+*/
 exports.bid = function(req, res) {
 	var auctionitem = req.auctionitem;
 	console.log("Bidding on===> " + auctionitem.name);
@@ -89,6 +92,30 @@ exports.bid = function(req, res) {
 	}).error(function(err){
 		return res.jsonp(err);
 	});
+}
+
+/*
+* Search Auctionitems
+*/
+exports.search = function(req, res) {
+	console.log("Inside Search");
+	console.log(req);
+	console.log(req.search);
+	AuctionItem.findAll({where: {id: 1}}).success(function(auctionitems){
+		console.log("Results of auction search");
+		console.log(auctionitems);
+		res.jsonp(auctionitems);
+	}).error(function(err){
+		res.jsonp(err);
+	});
+	// AuctionItem.find({where: {name: {like: '%' +req.body.search + '%'}}}).success(function(auctionitems){
+	// 	console.log("Results of auction search");
+	// 	console.log(auctionitems);
+	// 	res.jsonp(auctionitems);
+	// }).error(function(err){
+	// 	res.jsonp(err);
+	// });
+	// res.jsonp({});
 }
 
 /**
@@ -122,6 +149,7 @@ exports.list = function(req, res) {
  * Auctionitem middleware
  */
 exports.auctionitemByID = function(req, res, next, id) { 
+	if(id == 'search') { id = 1 }
 	AuctionItem.find({where: {id: id}}).success(function(auctionitem){
 		if(!auctionitem) return next(new Error('Failed to load auctionitem ' + id));
 		req.auctionitem = auctionitem;
