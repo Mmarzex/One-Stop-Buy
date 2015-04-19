@@ -18,7 +18,9 @@ var Item = sequelize.define('item', {
 	description: Sequelize.STRING,
 	location: Sequelize.STRING,
 	stock: Sequelize.INTEGER,
-	price: Sequelize.FLOAT
+	price: Sequelize.FLOAT,
+	creator: Sequelize.STRING,
+	image: Sequelize.STRING
 });
 
 Item.sync({force: true}).then(function() {
@@ -27,7 +29,9 @@ Item.sync({force: true}).then(function() {
 		description: "Five inches in Five Days",
 		location: "Your mom's house",
 		stock: 10,
-		price: 69.69
+		price: 69.69,
+		creator: "asdf",
+		image: "asdf.png"
 	});
 });
 

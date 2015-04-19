@@ -2,11 +2,19 @@
 	<div class="page-header">
 		<h1 data-ng-bind="auctionitem.name"></h1>
 	</div>
-	<img class="img-responsive" src="{{auctionitem.image}}" alt="">
-	<h5>Description: </h5>
+	<div class="thumbnail">
+		<img class="img-responsive" src="{{auctionitem.image}}" alt="">
+		<div class="caption-full">
+			<h4 class="pull-right">Current Bid: ${{auctionitem.current_bid | number:2}}</h4>
+			<h4><a href="#">{{auctionitem.name}}</a></h4>
+			<h5>Description: {{auctionitem.description}}</h5>
+
+		</div>
+	</div>
+	<!-- <h5>Description: </h5>
 	<h6 data-ng-bind="auctionitem.description"></h6>
 	<h5>Current bid: </h5>
-	<h6 data-ng-bind="auctionitem.current_bid"></h6>
+	<h6 data-ng-bind="auctionitem.current_bid"></h6> -->
 	<div class="input-group">
 	<span class="input-group-addon">$</span>
 	<input type="text" class="form-control" ng-model="new_bid" id="submit_bid" placeholder="0.00">

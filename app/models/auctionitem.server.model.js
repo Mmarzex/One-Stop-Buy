@@ -16,11 +16,18 @@ var schema = db.schema;
  	name: Sequelize.STRING,
  	description: Sequelize.STRING,
  	location: Sequelize.STRING,
+ 	poster_name: Sequelize.STRING,
  	buyer_name: Sequelize.STRING,
  	current_bid: Sequelize.FLOAT,
  	buy_it_now: Sequelize.FLOAT,
  	reserve_price: Sequelize.FLOAT,
  	image: Sequelize.STRING,
+ 	category: Sequelize.STRING
+// },
+// {
+// 	associate: function(models) {
+// 		AuctionItem.belongsTo(models.Category);
+// 	}
 });
 
  AuctionItem.sync({force: true}).then(function() {
@@ -28,6 +35,7 @@ var schema = db.schema;
  		name: "Three-Foot Dick",
  		description: "Sprinkled With Elvis Dust",
  		location: "Your mom's house",
+ 		poster_name: "Your mom",
  		buyer_name: "max",
  		current_bid: 0.0,
  		buy_it_now: 69.69,

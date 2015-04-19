@@ -14,6 +14,8 @@ angular.module('items').controller('ItemsController', ['$scope', '$stateParams',
 				location: this.location,
 				stock: this.stock,
 				price: this.price,
+				// creator: this.creator,
+				image: this.image
 			});
 
 			// Redirect after save
@@ -65,6 +67,27 @@ angular.module('items').controller('ItemsController', ['$scope', '$stateParams',
 			$scope.item = Items.get({ 
 				itemId: $stateParams.itemId
 			});
+		};
+
+		// an available item
+		$scope.buy = function() {
+			var buyer = $scope.authentication.user.username;
+
+			var item = $scope.item;
+			item.stock -= 1;
+			alert("Your item will be on its way soon");
+			item.$buy(function() {
+				$location.path('items/' + item.id);
+			});
+			// if(buyer = item.creator) {
+			// 	alert("You cannot buy an item you created.");
+			// 	item.$buy(function() {
+			// 		$location.path('items/' + item.id);
+			// 	});
+			// 	return;
+			// } else {
+				
+			// }
 		};
 	}
 ]);

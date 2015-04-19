@@ -8,7 +8,8 @@ var db = require('../../config/sequelize'),
 	_ = require('lodash'),
 	sequelize = db.sequelize,
 	schema = db.schema,
-	AuctionItem = schema.AuctionItem;
+	AuctionItem = schema.AuctionItem,
+	Category = schema.Category;
 
 /**
  * Create a Auctionitem
@@ -17,6 +18,27 @@ exports.create = function(req, res) {
 	var auctionitem = AuctionItem.build(req.body);
 	auctionitem.buyer_name = req.user.username;
 	console.log(auctionitem);
+
+	//Add Category here
+	Category.find({where: {name: req.body.category}}).success(function(category){
+		if(category !== null) {
+			console.log("Category already exists");
+			console.log(category);
+		} else {
+			console.log("Creating new category with name: " + req.body.category);
+			var category = Category.create({
+				name: req.body.category,
+				description: " "
+			});
+
+			category.save();
+		}
+		
+	}).error(function(err){
+		console.log(err);
+		
+	})
+	// End add category here
 	auctionitem.save().success(function(){
 		console.log("New Auction item with name:" + auctionitem.name);
 		res.json(auctionitem);
@@ -56,12 +78,13 @@ exports.update = function(req, res) {
 };
 
 exports.bid = function(req, res) {
-	var auctionitem = req.item;
+	var auctionitem = req.auctionitem;
 	console.log("Bidding on===> " + auctionitem.name);
 	auctionitem.updateAttributes({
 		current_bid: req.body.current_bid,
 		buyer_name: req.user.username
 	}).success(function(a){
+		a.save();
 		return res.jsonp(a);
 	}).error(function(err){
 		return res.jsonp(err);

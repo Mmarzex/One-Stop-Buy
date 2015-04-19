@@ -16,13 +16,15 @@ var Item = schema.Item;
  */
 exports.create = function(req, res) {
 	var item = Item.build(req.body);
-	console.log("Inside item create");
-	console.log(req.body);
+	// console.log("Inside item create");
+	// console.log(req.body);
+	item.creator = req.user.username;
 	item.save().success(function() {
 		console.log("New item with name: " + item.name);
+		res.jsonp(item);
 	}).error(function(err) {
 		console.log("Failed to create item: " + item.name);
-		res.jsonp(item);
+		res.jsonp(err);
 	});
 };
 
@@ -59,6 +61,22 @@ exports.update = function(req, res) {
 	// 	}
 	// });
 };
+
+/**
+** Buy an Item
+*/
+exports.buy = function(req, res) {
+	var item = req.item;
+	item.updateAttributes({
+		stock: item.stock
+	}).success(function(a){
+		a.save();
+		console.log("Stock of item " + item.name + " is now " + item.stock);
+		return res.jsonp(a);
+	}).error(function(err){
+		return res.jsonp(err);
+	});
+}
 
 /**
  * Delete an Item

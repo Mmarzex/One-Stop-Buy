@@ -2,6 +2,20 @@
 	<div class="page-header">
 		<h1 data-ng-bind="item.name"></h1>
 	</div>
+	<div class="thumbnail">
+		<img class="img-responsive" src="{{item.image}}" alt="">
+		<div class="caption-full">
+			<h4 class="pull-right">Price: ${{item.price | number:2}}</h4>
+			<h5 class="pull-right">Stock: {{item.stock}}</h5>
+			<h4><a href="#">{{item.name}}</a></h4>
+			<h5>Description: {{item.description}}</h5>
+		</div>
+	</div>
+	<div class="input-group">
+	<span class="input-group-btn">
+	<button class="btn btn-primary" type="button" data-ng-click="buy();">Buy Now!</button>
+	</span>
+	</div>
 	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == item.user._id))">
 		<a class="btn btn-primary" href="/#!/items/{{item.id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
@@ -10,7 +24,7 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
-	<small>
+	<!-- <small>
 		<em class="text-muted">
 			Posted on
 			<span data-ng-bind="item.created | date:'mediumDate'"></span>
@@ -20,11 +34,5 @@
 	</small>
 	<h3 data-ng-bind="item.description"></h3>
 	Price: <h4 data-ng-bind="item.price"></h4>
-	Stock: <h4 data-ng-bind="item.stock"></h4>
-	<div class="form-group">
-		<label class="control-label" for="bid">Bid</label>
-		<div class="controls">
-		<input type="text" data-ng-model="bid" id="bid" class="form-control" placeholder="Bid" required>
-		</div>
-	</div>
+	Stock: <h4 data-ng-bind="item.stock"></h4> -->
 </section>
