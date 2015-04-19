@@ -15,11 +15,6 @@ var schema = db.schema;
 var Category = sequelize.define('category', {
 	name: Sequelize.STRING,
 	description: Sequelize.STRING
-// },
-// {
-// 	associate: function(models) {
-// 		Category.hasMany(Category, {as: 'Children', foreignKey: 'ParentId', through: null});
-// 	}
 });
 
 Category.sync({force: true}).then(function() {

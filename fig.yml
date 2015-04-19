@@ -10,3 +10,9 @@ db:
   image: mongo
   ports: 
    - "27017:27017"
+msql:
+  image: orchardup/mysql
+  environment:
+    MYSQL_DATABASE: onestopbuy
+  ports:
+  - "3306:3306"

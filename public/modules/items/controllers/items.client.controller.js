@@ -74,11 +74,19 @@ angular.module('items').controller('ItemsController', ['$scope', '$stateParams',
 			var buyer = $scope.authentication.user.username;
 
 			var item = $scope.item;
-			item.stock -= 1;
-			alert("Your item will be on its way soon");
-			item.$buy(function() {
-				$location.path('items/' + item.id);
-			});
+			if(item.stock > 0) {
+				item.stock -= 1;
+				alert("Your item will be on its way soon to " + $scope.authentication.user.address.street);
+				item.$buy(function() {
+					$location.path('items/' + item.id);
+				});
+			} else {
+				alert("No more stock to buy. You are added to the waitinglist");
+				item.$buy(function() {
+					$location.path('items/' + item.id);
+				})
+			}
+			
 			// if(buyer = item.creator) {
 			// 	alert("You cannot buy an item you created.");
 			// 	item.$buy(function() {

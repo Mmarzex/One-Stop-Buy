@@ -59,6 +59,12 @@ var UserSchema = new Schema({
 		default: '',
 		validate: [validateLocalStrategyPassword, 'Password should be longer']
 	},
+	address: {
+		street: String,
+		city: String,
+		zipcode: String,
+		state: String
+	},
 	salt: {
 		type: String
 	},

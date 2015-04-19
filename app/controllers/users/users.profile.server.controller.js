@@ -10,6 +10,13 @@ var _ = require('lodash'),
 	User = mongoose.model('User');
 
 /**
+* Sequelize Dependiences
+*/
+var db = require('../../../config/sequelize'),
+	sequelize = db.sequelize,
+	schema = db.schema,
+	Bought = schema.Bought;
+/**
  * Update user details
  */
 exports.update = function(req, res) {
@@ -53,4 +60,21 @@ exports.update = function(req, res) {
  */
 exports.me = function(req, res) {
 	res.json(req.user || null);
+};
+
+/**
+* Get User's Orders
+*/
+exports.orders = function(req, res) {
+	console.log("ORDERSASDFGHJKJHGF");
+	var username = req.user.username;
+	Bought.findAll({where: {buyer_name: username}}).success(function(boughtItems){
+		if(!boughtItems) return res.jsonp("{message: No order nothing}");
+		console.log("Inside orders");
+		console.log(boughtItems);
+		req.orders = boughtItems;
+		res.jsonp(boughtItems);
+	}).error(function(err){
+		res.jsonp(err);
+	});
 };

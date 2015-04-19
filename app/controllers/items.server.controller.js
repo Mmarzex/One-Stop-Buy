@@ -10,7 +10,7 @@ var errorHandler = require('./errors.server.controller'),
 	schema = db.schema;
 
 var Item = schema.Item;
-
+var Bought = schema.Bought;
 /**
  * Create a Item
  */
@@ -72,6 +72,12 @@ exports.buy = function(req, res) {
 	}).success(function(a){
 		a.save();
 		console.log("Stock of item " + item.name + " is now " + item.stock);
+		var bought = Bought.build(req.body);
+		bought.buyer_name = req.user.username;
+		bought.item_name = item.name;
+		bought.item_id = item.id;
+		bought.auction_item = false;
+		bought.save().success(function() { console.log("Item bought!")}).error(function(err){ console.log(err); });
 		return res.jsonp(a);
 	}).error(function(err){
 		return res.jsonp(err);
@@ -135,8 +141,8 @@ exports.itemByID = function(req, res, next, id) {
  * Item authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.item.user.id !== req.user.id) {
-		return res.status(403).send('User is not authorized');
-	}
+	// if (req.item.user.id !== req.user.id) {
+	// 	return res.status(403).send('User is not authorized');
+	// }
 	next();
 };
