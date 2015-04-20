@@ -3,7 +3,7 @@
 module.exports = {
 	sqldb: {
 		name: "onestopbuy",
-		password: "password",
+		password: "",
 		username: "root"
 	},
 	db: 'mongodb://localhost/onestopbuy-dev',

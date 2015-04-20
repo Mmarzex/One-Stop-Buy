@@ -39,6 +39,7 @@ exports.read = function(req, res) {
  * Update a Item
  */
 exports.update = function(req, res) {
+	console.log("Inside update");
 	var item = req.item;
 
 	item = _.extend(item , req.body);
@@ -68,16 +69,16 @@ exports.update = function(req, res) {
 exports.buy = function(req, res) {
 	var item = req.item;
 	item.updateAttributes({
-		stock: item.stock
+		stock: item.stock - 1
 	}).success(function(a){
 		a.save();
 		console.log("Stock of item " + item.name + " is now " + item.stock);
-		var bought = Bought.build(req.body);
-		bought.buyer_name = req.user.username;
-		bought.item_name = item.name;
-		bought.item_id = item.id;
-		bought.auction_item = false;
-		bought.save().success(function() { console.log("Item bought!")}).error(function(err){ console.log(err); });
+		// var bought = Bought.build(req.body);
+		// bought.buyer_name = req.user.username;
+		// bought.item_name = item.name;
+		// bought.item_id = item.id;
+		// bought.auction_item = false;
+		// bought.save().success(function() { console.log("Item bought!")}).error(function(err){ console.log(err); });
 		return res.jsonp(a);
 	}).error(function(err){
 		return res.jsonp(err);

@@ -76,10 +76,12 @@ angular.module('items').controller('ItemsController', ['$scope', '$stateParams',
 			var item = $scope.item;
 			if(item.stock > 0) {
 				item.stock -= 1;
+				alert(item.stock);
 				alert("Your item will be on its way soon to " + $scope.authentication.user.address.street);
 				item.$buy(function() {
 					$location.path('items/' + item.id);
 				});
+				alert(item.stock);
 			} else {
 				alert("No more stock to buy. You are added to the waitinglist");
 				item.$buy(function() {
