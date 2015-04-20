@@ -65,6 +65,7 @@ var UserSchema = new Schema({
 		zipcode: String,
 		state: String
 	},
+	isShopper: Boolean,
 	salt: {
 		type: String
 	},

@@ -16,6 +16,7 @@ var db = require('../../../config/sequelize'),
 	sequelize = db.sequelize,
 	schema = db.schema,
 	Bought = schema.Bought;
+	
 /**
  * Update user details
  */

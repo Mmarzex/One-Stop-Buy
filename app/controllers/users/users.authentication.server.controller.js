@@ -28,6 +28,7 @@ exports.signup = function(req, res) {
 	user.address.city = req.body.city;
 	user.address.zipcode = req.body.zipcode;
 	user.address.state = req.body.state;
+	user.isShopper = false;
 	console.log(user);
 	// Then save the user 
 	user.save(function(err) {

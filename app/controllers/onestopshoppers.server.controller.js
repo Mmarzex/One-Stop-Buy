@@ -10,6 +10,12 @@ var db = require('../../config/sequelize'),
 	schema = db.schema,
 	OneStopShopper = schema.OneStopShopper;
 
+
+/** 
+* User model requirements
+*/
+var mongoose = require('mongoose'),
+	User = mongoose.model('User');
 /**
  * Create a Onestopshopper
  */
@@ -22,9 +28,25 @@ exports.create = function(req, res) {
 	var onestopshopper = OneStopShopper.build(req.body);
 	onestopshopper.username = req.user.username;
 	onestopshopper.startDate = new Date();
-	onestopshopper.endDate = new Date();
+	onestopshopper.renewDate = new Date();
 	onestopshopper.save().success(function(){
 		console.log("New onestopshopper subscription for: " + onestopshopper.username);
+		var user = req.user;
+		delete req.body.roles;
+
+		if(user) {
+			user = _.extend(user, req.body);
+			user.updated = Date.now();
+			user.isShopper = true;
+			user.save(function(err) {
+				if(err) {
+					console.log(err);
+				} else {
+					console.log(user.username + " is now a onestopshopper!");
+				}
+			});
+		}
+
 		res.jsonp(onestopshopper);
 	}).error(function(err){
 		res.jsonp(err);

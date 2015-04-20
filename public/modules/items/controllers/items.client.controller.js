@@ -72,16 +72,18 @@ angular.module('items').controller('ItemsController', ['$scope', '$stateParams',
 		// an available item
 		$scope.buy = function() {
 			var buyer = $scope.authentication.user.username;
-
+			var isShopper = $scope.authentication.user.isShopper;
 			var item = $scope.item;
 			if(item.stock > 0) {
 				item.stock -= 1;
-				alert(item.stock);
-				alert("Your item will be on its way soon to " + $scope.authentication.user.address.street);
+				if(isShopper) {
+					alert("Your item will be on its way soon to " + $scope.authentication.user.address.street + ". With OneStopShopper shipping.");
+				} else {
+					alert("Your item will be on its way soon to " + $scope.authentication.user.address.street + ". With standard shipping.");
+				}
 				item.$buy(function() {
 					$location.path('items/' + item.id);
 				});
-				alert(item.stock);
 			} else {
 				alert("No more stock to buy. You are added to the waitinglist");
 				item.$buy(function() {

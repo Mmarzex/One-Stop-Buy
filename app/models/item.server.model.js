@@ -31,7 +31,7 @@ Item.sync({force: true}).then(function() {
 		stock: 10,
 		price: 69.69,
 		creator: "asdf",
-		image: "asdf.png"
+		image: "http://www.genericviagra123.com/wp-content/uploads/2013/02/generic-viagra.jpg"
 	});
 });
 

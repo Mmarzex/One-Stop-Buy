@@ -11,6 +11,7 @@ var errorHandler = require('./errors.server.controller'),
 
 var Item = schema.Item;
 var Bought = schema.Bought;
+
 /**
  * Create a Item
  */
@@ -52,15 +53,6 @@ exports.update = function(req, res) {
 	}).error(function(err){
 		res.jsonp(err);
 	});
-	// item.save(function(err) {
-	// 	if (err) {
-	// 		return res.status(400).send({
-	// 			message: errorHandler.getErrorMessage(err)
-	// 		});
-	// 	} else {
-	// 		res.jsonp(item);
-	// 	}
-	// });
 };
 
 /**
@@ -68,17 +60,21 @@ exports.update = function(req, res) {
 */
 exports.buy = function(req, res) {
 	var item = req.item;
+	var newStock = item.stock;
+	if(newStock > 0) {
+		newStock--;
+	}
 	item.updateAttributes({
-		stock: item.stock - 1
+		stock: newStock
 	}).success(function(a){
 		a.save();
 		console.log("Stock of item " + item.name + " is now " + item.stock);
-		// var bought = Bought.build(req.body);
-		// bought.buyer_name = req.user.username;
-		// bought.item_name = item.name;
-		// bought.item_id = item.id;
-		// bought.auction_item = false;
-		// bought.save().success(function() { console.log("Item bought!")}).error(function(err){ console.log(err); });
+		var bought = Bought.build(req.body);
+		bought.buyer_name = req.user.username;
+		bought.item_name = item.name;
+		bought.item_id = item.id;
+		bought.auction_item = false;
+		bought.save().success(function() { console.log("Item bought!")}).error(function(err){ console.log(err); });
 		return res.jsonp(a);
 	}).error(function(err){
 		return res.jsonp(err);
@@ -90,16 +86,6 @@ exports.buy = function(req, res) {
  */
 exports.delete = function(req, res) {
 	var item = req.item ;
-
-	// item.remove(function(err) {
-	// 	if (err) {
-	// 		return res.status(400).send({
-	// 			message: errorHandler.getErrorMessage(err)
-	// 		});
-	// 	} else {
-	// 		res.jsonp(item);
-	// 	}
-	// });
 };
 
 /**
@@ -114,15 +100,6 @@ exports.list = function(req, res) {
 	}).error(function(err){
 		res.jsonp(err);
 	});
-	// Item.find().sort('-created').populate('user', 'displayName').exec(function(err, items) {
-	// 	if (err) {
-	// 		return res.status(400).send({
-	// 			message: errorHandler.getErrorMessage(err)
-	// 		});
-	// 	} else {
-	// 		res.jsonp(items);
-	// 	}
-	// });
 };
 
 /**
