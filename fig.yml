@@ -2,6 +2,7 @@ web:
   build: .
   links:
    - db
+   - msql
   ports:
    - "3000:3000"
   environment: 
@@ -11,9 +12,11 @@ db:
   ports: 
    - "27017:27017"
 msql:
-  image: mysql
+  image: mysql:5.6
   environment:
    - MYSQL_ROOT_PASSWORD=password
    - MYSQL_DATABASE=onestopbuy
+  volumes:
+    - /data/mysql:/var/lib/mysql
   ports:
   - "3306:3306"
