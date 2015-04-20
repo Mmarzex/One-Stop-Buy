@@ -13,7 +13,7 @@ db:
 msql:
   image: mysql
   environment:
-    MYSQL_ROOT_PASSWORD=password
-    MYSQL_DATABASE=onestopbuy
+   - MYSQL_ROOT_PASSWORD=password
+   - MYSQL_DATABASE=onestopbuy
   ports:
   - "3306:3306"
