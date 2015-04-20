@@ -11,7 +11,7 @@ db:
   ports: 
    - "27017:27017"
 msql:
-  image: orchardup/mysql
+  image: mysql
   environment:
     MYSQL_DATABASE: onestopbuy
   ports:
