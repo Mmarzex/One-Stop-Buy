@@ -15,7 +15,8 @@ var _ = require('lodash'),
 var db = require('../../../config/sequelize'),
 	sequelize = db.sequelize,
 	schema = db.schema,
-	Bought = schema.Bought;
+	Bought = schema.Bought,
+	AuctionItem = schema.AuctionItem;
 	
 /**
  * Update user details
@@ -75,6 +76,21 @@ exports.orders = function(req, res) {
 		console.log(boughtItems);
 		req.orders = boughtItems;
 		res.jsonp(boughtItems);
+	}).error(function(err){
+		res.jsonp(err);
+	});
+};
+
+/**
+** Get User's won auctions
+*/
+exports.wonauctions = function(req, res) {
+	console.log("Inside won auctions");
+	var username = req.user.username;
+	AuctionItem.findAll({where: {buyer_name: username, auction_ended: true}}).success(function(wonauctions){
+		console.log(wonauctions);
+		req.wonauctions = wonauctions;
+		res.jsonp(wonauctions);
 	}).error(function(err){
 		res.jsonp(err);
 	});

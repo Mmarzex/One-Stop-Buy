@@ -19,5 +19,14 @@ angular.module('users').controller('OrdersController', ['$scope', '$http', '$loc
 			// 	$location.path('/orders');
 			// });
 		};
+
+		$scope.wonauctions = function() {
+			$http.get('/users/wonauctions').success(function(data, status, headers, config) {
+				console.log(data);
+				$scope.wonauctions = data;
+			}).error(function(data, status, headers, config){
+				alert('error');
+			});
+		};
 	}
 ]);

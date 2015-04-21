@@ -44,6 +44,10 @@ angular.module('users').config(['$stateProvider',
 		state('orders', {
 			url: '/orders',
 			templateUrl: 'modules/users/views/settings/orders.client.view.html'
+		}).
+		state('wonauctions', {
+			url: '/wonauctions',
+			templateUrl: 'modules/users/views/settings/wonauctions.client.view.html'
 		});
 	}
 ]);

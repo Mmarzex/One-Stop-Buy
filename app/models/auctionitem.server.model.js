@@ -42,7 +42,7 @@ var schema = db.schema;
  		buy_it_now: 69.69,
  		reserve_price: 69.69,
  		image: "http://i.imgur.com/6XAJI6V.jpg",
- 		auction_ended: false
+ 		auction_ended: true
  	});
  });
 
