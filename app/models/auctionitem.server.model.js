@@ -31,7 +31,7 @@ var schema = db.schema;
 // 	}
 });
 
- AuctionItem.sync({force: true}).then(function() {
+ AuctionItem.sync({force: false}).then(function() {
  	return AuctionItem.create({
  		name: "Three-Foot Dick",
  		description: "Sprinkled With Elvis Dust",

@@ -24,7 +24,7 @@ var Item = sequelize.define('item', {
 	image: Sequelize.STRING
 });
 
-Item.sync({force: true}).then(function() {
+Item.sync({force: false}).then(function() {
 	return Item.create({
 		name: "Male Enhancement Drugs",
 		description: "Five inches in Five Days",

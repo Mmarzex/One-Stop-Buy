@@ -20,7 +20,7 @@ var Bought = sequelize.define('bought', {
 	auction_item: Sequelize.BOOLEAN
 });
 
-Bought.sync({force: true}).then(function() {
+Bought.sync({force: false}).then(function() {
 	console.log("Bought schema synced successfully");
 });
 

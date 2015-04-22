@@ -19,7 +19,7 @@ var AuctionReview = sequelize.define('auctionreview', {
 	post_date: Sequelize.DATE
 });
 
-AuctionReview.sync({force: true}).then(function() {
+AuctionReview.sync({force: false}).then(function() {
 	AuctionReview.create({
 		poster: "max",
 		auction_id: 1,

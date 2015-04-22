@@ -19,7 +19,7 @@ var Review = sequelize.define('review', {
 	post_date: Sequelize.DATE
 });
 
-Review.sync({force: true}).then(function() {
+Review.sync({force: false}).then(function() {
 	Review.create({
 		poster: "max",
 		item_id: 1,

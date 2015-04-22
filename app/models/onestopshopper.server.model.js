@@ -18,7 +18,7 @@ var OneStopShopper = sequelize.define('onestopshopper', {
 });
 
 
-OneStopShopper.sync({force: true}).then(function() {
+OneStopShopper.sync({force: false}).then(function() {
 	console.log("OneStopShopper Schema Synced to database");
 });
 

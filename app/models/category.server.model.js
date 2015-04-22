@@ -18,7 +18,7 @@ var Category = sequelize.define('category', {
 	parent: Sequelize.STRING
 });
 
-Category.sync({force: true}).then(function() {
+Category.sync({force: false}).then(function() {
 	Category.create({
 		name: "Tennis",
 		description: "Balls flying everywhere",
