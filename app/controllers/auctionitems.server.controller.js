@@ -37,7 +37,7 @@ exports.create = function(req, res) {
 	}).error(function(err){
 		console.log(err);
 		
-	})
+	});
 	// End add category here
 	auctionitem.save().success(function(){
 		console.log("New Auction item with name:" + auctionitem.name);

@@ -20,6 +20,7 @@ var Item = sequelize.define('item', {
 	stock: Sequelize.INTEGER,
 	price: Sequelize.FLOAT,
 	creator: Sequelize.STRING,
+	category: Sequelize.STRING,
 	image: Sequelize.STRING
 });
 

@@ -20,6 +20,27 @@ exports.create = function(req, res) {
 	// console.log("Inside item create");
 	// console.log(req.body);
 	item.creator = req.user.username;
+
+	//Add Category here
+	Category.find({where: {name: req.body.category}}).success(function(category){
+		if(category !== null) {
+			console.log("Category already exists");
+			console.log(category);
+		} else {
+			console.log("Creating new category with name: " + req.body.category);
+			var category = Category.create({
+				name: req.body.category,
+				description: " "
+			});
+
+			category.save();
+		}
+		
+	}).error(function(err){
+		console.log(err);
+		
+	});
+	
 	item.save().success(function() {
 		console.log("New item with name: " + item.name);
 		res.jsonp(item);
