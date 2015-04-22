@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Module dependencies.
+ * Module dependencies. 
  */
 var errorHandler = require('./errors.server.controller'),
 	_ = require('lodash'),

@@ -16,7 +16,8 @@ var AuctionReview = schema.AuctionReview;
 * Retrieve reviews for item with id itemid
 */
 exports.reviews = function(req, res) {
-	var itemid = req.body.itemid;
+	console.log(req.query);
+	var itemid = req.query.itemid;
 	Review.findAll({where: {item_id: itemid}}).success(function(reviews){
 		console.log(reviews);
 		res.jsonp(reviews);

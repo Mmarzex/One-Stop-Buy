@@ -1,8 +1,8 @@
 'use strict';
 
 // Items controller
-angular.module('items').controller('ItemsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Items',
-	function($scope, $stateParams, $location, Authentication, Items) {
+angular.module('items').controller('ItemsController', ['$scope', '$http', '$stateParams', '$location', 'Authentication', 'Items',
+	function($scope, $http, $stateParams, $location, Authentication, Items) {
 		$scope.authentication = Authentication;
 
 		// Create new Item
@@ -100,6 +100,22 @@ angular.module('items').controller('ItemsController', ['$scope', '$stateParams',
 			// } else {
 				
 			// }
+		};
+
+		// get all reviews for selected item
+		$scope.itemreviews = function(id) {
+			var item = $scope.item;
+			console.log($stateParams.itemId);
+			var item_id = $stateParams.itemId;
+			var params = {
+				itemid: item_id
+			}
+			$http.get('/itemreview?itemid=' + item_id).success(function(data, status, headers, config){
+				console.log(data);
+				$scope.itemreviews = data;
+			}).error(function(data, status, headers, config) {
+				alert('error');
+			});
 		};
 	}
 ]);

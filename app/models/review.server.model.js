@@ -9,7 +9,7 @@ var Sequelize = require('sequelize'),
 	schema = db.schema;
 
 /**
-* Review Schema
+* Review Schema 
 */
 
 var Review = sequelize.define('review', {
@@ -20,7 +20,18 @@ var Review = sequelize.define('review', {
 });
 
 Review.sync({force: true}).then(function() {
-
+	Review.create({
+		poster: "max",
+		item_id: 1,
+		text: "BULLSHIT",
+		post_date: Date.now()
+	});
+	Review.create({
+		poster: "max",
+		item_id: 1,
+		text: "asdfasdfasdfasdf",
+		post_date: Date.now()
+	});
 });
 
 schema['Review'] = Review;
