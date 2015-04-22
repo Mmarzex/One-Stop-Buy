@@ -30,7 +30,7 @@ exports.reviews = function(req, res) {
 * Retrieve reviews for auction item with id auctionid
 */
 exports.auctionreviews = function(req, res) {
-	var auctionid = req.body.auctionid;
+	var auctionid = req.query.auctionid;
 	AuctionReview.findAll({where: {auction_id: auctionid}}).success(function(reviews){
 		console.log(reviews);
 		res.jsonp(reviews);

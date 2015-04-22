@@ -20,7 +20,18 @@ var AuctionReview = sequelize.define('auctionreview', {
 });
 
 AuctionReview.sync({force: true}).then(function() {
-
+	AuctionReview.create({
+		poster: "max",
+		auction_id: 1,
+		text: "BULLSHIT",
+		post_date: Date.now()
+	});
+	AuctionReview.create({
+		poster: "max",
+		auction_id: 1,
+		text: "asdfasdfasdfasdf",
+		post_date: Date.now()
+	});
 });
 
 schema['AuctionReview'] = AuctionReview;

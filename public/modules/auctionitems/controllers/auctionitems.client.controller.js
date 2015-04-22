@@ -1,8 +1,8 @@
 'use strict';
 
 // Auctionitems controller
-angular.module('auctionitems').controller('AuctionitemsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Auctionitems',
-	function($scope, $stateParams, $location, Authentication, Auctionitems) {
+angular.module('auctionitems').controller('AuctionitemsController', ['$scope', '$http', '$stateParams', '$location', 'Authentication', 'Auctionitems',
+	function($scope, $http, $stateParams, $location, Authentication, Auctionitems) {
 		$scope.authentication = Authentication;
 		// Create new Auctionitem
 		$scope.create = function() {
@@ -108,6 +108,22 @@ angular.module('auctionitems').controller('AuctionitemsController', ['$scope', '
 			alert("Search starting");
 			auctionitem.$search(function() {
 				$location.path('asearch');
+			});
+		};
+
+		// Get all reviews for selected auction item
+		$scope.auctionreviews = function(id) {
+			var item = $scope.item;
+			console.log($stateParams.auctionitemId);
+			var auction_id = $stateParams.auctionitemId;
+			var params = {
+				itemid: auction_id
+			}
+			$http.get('/auctionreview?auctionid=' + auction_id).success(function(data, status, headers, config){
+				console.log(data);
+				$scope.auctionreviews = data;
+			}).error(function(data, status, headers, config) {
+				alert('error');
 			});
 		};
 	}
