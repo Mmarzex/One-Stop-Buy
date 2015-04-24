@@ -1,0 +1,18 @@
+<section data-ng-controller="CatbrowseaucsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="catbrowseauc.name"></h1>
+	</div>
+	
+	<div class="list-group" data-ng-init="auctionsInCat();">
+        <a data-ng-repeat="item in auctionsincat" data-ng-href="#!/auctionitems/{{item.id}}" class="list-group-item">
+            <h4 class="list-group-item-heading" data-ng-bind="item.name"></h4>
+            <!-- Price: <h5 data-ng-bind="item.price"></h5> -->
+			<!-- <small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="item.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="item.user.displayName"></span>
+			</small> -->
+        </a>
+    </div>
+</section>

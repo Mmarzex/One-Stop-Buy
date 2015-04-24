@@ -25,15 +25,15 @@ var Item = sequelize.define('item', {
 });
 
 Item.sync({force: false}).then(function() {
-	return Item.create({
-		name: "Male Enhancement Drugs",
-		description: "Five inches in Five Days",
-		location: "Your mom's house",
-		stock: 10,
-		price: 69.69,
-		creator: "asdf",
-		image: "http://www.genericviagra123.com/wp-content/uploads/2013/02/generic-viagra.jpg"
-	});
+	// return Item.create({
+	// 	name: "Male Enhancement Drugs",
+	// 	description: "Five inches in Five Days",
+	// 	location: "Your mom's house",
+	// 	stock: 10,
+	// 	price: 69.69,
+	// 	creator: "asdf",
+	// 	image: "http://www.genericviagra123.com/wp-content/uploads/2013/02/generic-viagra.jpg"
+	// });
 });
 
 schema['Item'] = Item;

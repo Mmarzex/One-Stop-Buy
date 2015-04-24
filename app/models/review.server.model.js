@@ -20,18 +20,18 @@ var Review = sequelize.define('review', {
 });
 
 Review.sync({force: false}).then(function() {
-	Review.create({
-		poster: "max",
-		item_id: 1,
-		text: "BULLSHIT",
-		post_date: Date.now()
-	});
-	Review.create({
-		poster: "max",
-		item_id: 1,
-		text: "asdfasdfasdfasdf",
-		post_date: Date.now()
-	});
+	// Review.create({
+	// 	poster: "max",
+	// 	item_id: 1,
+	// 	text: "BULLSHIT",
+	// 	post_date: Date.now()
+	// });
+	// Review.create({
+	// 	poster: "max",
+	// 	item_id: 1,
+	// 	text: "asdfasdfasdfasdf",
+	// 	post_date: Date.now()
+	// });
 });
 
 schema['Review'] = Review;

@@ -7,4 +7,6 @@ module.exports = function(app) {
 	app.route('/').get(core.index);
 
 	app.route('/categories').get(categories.findall);
+	app.route('/itemsincats').get(categories.findItemsInCat);
+	app.route('/auctionincats').get(categories.findAuctionItemsInCat);
 };

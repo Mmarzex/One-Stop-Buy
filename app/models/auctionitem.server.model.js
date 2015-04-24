@@ -32,18 +32,18 @@ var schema = db.schema;
 });
 
  AuctionItem.sync({force: false}).then(function() {
- 	return AuctionItem.create({
- 		name: "Three-Foot Dick",
- 		description: "Sprinkled With Elvis Dust",
- 		location: "Your mom's house",
- 		poster_name: "Your mom",
- 		buyer_name: "max",
- 		current_bid: 0.0,
- 		buy_it_now: 69.69,
- 		reserve_price: 69.69,
- 		image: "http://i.imgur.com/6XAJI6V.jpg",
- 		auction_ended: true
- 	});
+ 	// return AuctionItem.create({
+ 	// 	name: "Three-Foot Dick",
+ 	// 	description: "Sprinkled With Elvis Dust",
+ 	// 	location: "Your mom's house",
+ 	// 	poster_name: "Your mom",
+ 	// 	buyer_name: "max",
+ 	// 	current_bid: 0.0,
+ 	// 	buy_it_now: 69.69,
+ 	// 	reserve_price: 69.69,
+ 	// 	image: "http://i.imgur.com/6XAJI6V.jpg",
+ 	// 	auction_ended: true
+ 	// });
  });
 
  schema['AuctionItem'] = AuctionItem;

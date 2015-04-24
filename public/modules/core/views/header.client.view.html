@@ -9,18 +9,122 @@
 		<a href="/#!/" class="navbar-brand">OneStopBuy</a>
 	</div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-		<ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
-			<li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
+		<ul class="nav navbar-nav" >
+			<li data-ng-repeat="item in menu.items | orderBy: 'position'" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
 				<a ng-switch-when="dropdown" class="dropdown-toggle">
 					<span data-ng-bind="item.title"></span>
 					<b class="caret"></b>
 				</a>
 				<ul ng-switch-when="dropdown" class="dropdown-menu">
-					<li data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" ui-route="{{subitem.uiRoute}}" ng-class="{active: $uiRoute}">
+					<li data-ng-repeat="subitem in item.items | orderBy: 'position'" ui-route="{{subitem.uiRoute}}" ng-class="{active: $uiRoute}">
 						<a href="/#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>
 					</li>
 				</ul>
 				<a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle">
+					<span>Categories</span>
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+				<li role="presentation" class="dropdown-header">Apparel</li>
+					<li>
+						<a href="/#!/catbrowses/outerwear">Outerwear</a>
+					</li>
+					<li>
+						<a href="/#!/catbrowses/accessories">Accessories</a>
+					</li>
+					<li>
+						<a href="/#!/catbrowses/misc">Misc</a>
+					</li>
+					<li role="presentation" class="dropdown-header">Outerwear</li>
+					<li>
+						<a href="/#!/catbrowses/shoes">Shoes</a>
+					</li>
+					<li>
+						<a href="/#!/catbrowseaucs/hats">Hats</a>
+					</li>
+					<li>
+						<a href="/#!/catbrowseaucs/clothes">Clothes</a>
+					</li>
+					<li role="presentation" class="dropdown-header">Accessories</li>
+					<li>
+						<a href="/#!/catbrowses/jewelry">jewelry</a>
+					</li>
+					<li>
+						<a href="/#!/catbrowses/watches">watches</a>
+					</li>
+					<li role="presentation" class="dropdown-header">Misc</li>
+					<li>
+						<a href="/#!/catbrowseaucs/canes">canes</a>
+					</li>
+					<li>
+						<a href="/#!/catbrowseaucs/umbrellas">umbrellas</a>
+					</li>
+				<li role="presentation" class="dropdown-header">Electronics</li>
+					<li>
+						<a href="/#!/catbrowses/gaming">gaming</a>
+					</li>
+					<li>
+						<a href="/#!/catbrowses/audio">audio</a>
+					</li>
+					<li role="presentation" class="dropdown-header">Gaming</li>
+					<li>
+						<a href="/#!/catbrowses/videogames">videogames</a>
+					</li>
+					<li>
+						<a href="/#!/catbrowses/computers">computers</a>
+					</li>
+					<li role="presentation" class="dropdown-header">Audio</li>
+					<li>
+						<a href="/#!/catbrowseaucs/headphones">headphones</a>
+					</li>
+					<li>
+						<a href="/#!/catbrowses/phones">phones</a>
+					</li>
+				<li role="presentation" class="dropdown-header">Outdoor</li>
+					<li>
+						<a href="/#!/catbrowses/sports">sports</a>
+					</li>
+					<li>
+						<a href="/#!/catbrowses/activities">activities</a>
+					</li>
+					<li role="presentation" class="dropdown-header">Sports</li>
+					<li>
+						<a href="/#!/catbrowses/tennis">tennis</a>
+					</li>
+					<li>
+						<a href="/#!/catbrowseaucs/golf">golf</a>
+					</li>
+					<li>
+						<a href="/#!/catbrowseaucs/sking">sking</a>
+					</li>
+					<li>
+						<a href="/#!/catbrowseaucs/biking">biking</a>
+					</li>
+					<li role="presentation" class="dropdown-header">Activities</li>
+					<li>
+						<a href="/#!/catbrowses/guns">guns</a>
+					</li>
+				<li role="presentation" class="dropdown-header">Home Goods</li>
+					<li>
+						<a href="/#!/catbrowses/food">food</a>
+					</li>
+					<li>
+						<a href="/#!/catbrowses/pets">pets</a>
+					</li>
+					<li>
+						<a href="/#!/catbrowses/handyman">handyman</a>
+					</li>
+					<li role="presentation" class="dropdown-header">Handyman</li>
+					<li>
+						<a href="/#!/catbrowseaucs/locks">locks</a>
+					</li>
+					<li>
+						<a href="/#!/catbrowseaucs/rope">rope</a>
+					</li>
+				</ul>
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
