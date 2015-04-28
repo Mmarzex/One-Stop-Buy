@@ -21,6 +21,8 @@ exports.findall = function(req, res) {
 	});
 };
 
+var rootCats = ["Home Goods", "Electronics", "Outdoor", "Apparel"];
+
 exports.findItemsInCat = function(req, res) {
 	
 	var category = req.query.cat;
@@ -41,6 +43,24 @@ exports.findItemsInCat = function(req, res) {
 		res.jsonp(err);
 	});
 };
+
+exports.findItems = function(req, res) {
+
+	var category = req.query.cat;
+	Category.find({where: {name: category}}).success(function(cat){
+		var cat_parent = cat.parent;
+		var cat_child = cat.child;
+		
+		// Top Level Case
+		if(cat_parent === "NULL") {
+
+		} else if(rootCats.indexOf(cat_parent) !== -1) {
+
+		} else {
+			
+		}
+	})
+}
 
 exports.findAuctionItemsInCat = function(req, res) {
 	
