@@ -1,8 +1,8 @@
-<section data-ng-controller="SearchesController" data-ng-init="find()">
+<section data-ng-controller="SearchesController">
     <div class="page-header">
         <h1>Searches</h1>
     </div>
-    <div class="list-group">
+    <!-- <div class="list-group">
         <a data-ng-repeat="search in searches" data-ng-href="#!/searches/{{search._id}}" class="list-group-item">
 			<small class="list-group-item-text">
 				Posted on
@@ -15,5 +15,28 @@
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!searches.$resolved || searches.length">
     	No Searches yet, why don't you <a href="/#!/searches/create">create one</a>?
+    </div> -->
+    <span class="input-group-addon">Search:</span>
+     <input type="text" class="form-control" ng-model="search_term" id="submit_search" placeholder="Term Here">
+     <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" data-ng-click="search(search_term);">Search Now!</button>
+     </span>
+
+    <div class="page-header">
+        <h2>Item Results</h2>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="item in itemresults" data-ng-href="#!/items/{{item.id}}" class="list-group-item">
+            <h4 class="list-group-item-heading" data-ng-bind="item.name"></h4>
+        </a>
+    </div>
+
+    <div class="page-header">
+        <h2>Auction Results</h2>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="auction in auctionresults" data-ng-href="#!/auctionitems/{{auction.id}}" class="list-group-item">
+            <h4 class="list-group-item-heading" data-ng-bind="auction.name"></h4>
+        </a>
     </div>
 </section>

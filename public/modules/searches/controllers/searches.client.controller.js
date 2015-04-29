@@ -1,8 +1,8 @@
 'use strict';
 
 // Searches controller
-angular.module('searches').controller('SearchesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Searches',
-	function($scope, $stateParams, $location, Authentication, Searches) {
+angular.module('searches').controller('SearchesController', ['$scope', '$http', '$stateParams', '$location', 'Authentication', 'Searches',
+	function($scope, $http, $stateParams, $location, Authentication, Searches) {
 		$scope.authentication = Authentication;
 
 		// Create new Search
@@ -60,6 +60,23 @@ angular.module('searches').controller('SearchesController', ['$scope', '$statePa
 		$scope.findOne = function() {
 			$scope.search = Searches.get({ 
 				searchId: $stateParams.searchId
+			});
+		};
+
+		$scope.search = function(term) {
+
+			$http.get('/itemsearch?searchterm=' + term).success(function(data, status, headers, config){
+				console.log(data);
+				$scope.itemresults = data;
+			}).error(function(data, status, headers, config){
+				alert('error');
+			});
+
+			$http.get('/auctionsearch?searchterm=' + term).success(function(data, status, headers, config){
+				console.log(data);
+				$scope.auctionresults = data;
+			}).error(function(data, status, headers, config){
+				alert('error');
 			});
 		};
 	}

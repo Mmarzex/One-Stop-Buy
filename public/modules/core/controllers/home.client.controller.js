@@ -7,5 +7,21 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
 		$scope.authentication = Authentication;
 
 		
+		$scope.search = function(term) {
+
+			$http.get('/itemsearch?searchterm=' + term).success(function(data, status, headers, config){
+				console.log(data);
+				$scope.itemresults = data;
+			}).error(function(data, status, headers, config){
+				alert('error');
+			});
+
+			$http.get('/auctionsearch?searchterm=' + term).success(function(data, status, headers, config){
+				console.log(data);
+				$scope.auctionresults = data;
+			}).error(function(data, status, headers, config){
+				alert('error');
+			});
+		};
 	}
 ]);

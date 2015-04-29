@@ -114,7 +114,7 @@ exports.searchByID = function(req, res, next, id) {
 };
 
 /**
- * Search authorization middleware
+ * Search authorization middlew are
  */
 exports.hasAuthorization = function(req, res, next) {
 	if (req.search.user.id !== req.user.id) {

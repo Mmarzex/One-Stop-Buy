@@ -38,3 +38,29 @@ exports.getUserReport = function(req, res) {
 		// });
 	});
 };
+
+exports.auctionSearch = function(req, res) {
+
+	var term = req.query.searchterm;
+
+	AuctionItem.findAll({where: {name: {like: '%' + term + '%'}}}).success(function(auctionitems){
+		console.log("Results of search");
+		console.log(auctionitems);
+		// res.search = auctionitems;
+		res.jsonp(auctionitems);
+	}).error(function(err){
+		res.jsonp(err);
+	});
+};
+
+exports.itemSearch = function(req, res) {
+
+	var term = req.query.searchterm;
+
+	Item.findAll({where: {name: {like: '%' + term + '%'}}}).success(function(items){
+		console.log(items);
+		res.jsonp(items);
+	}).error(function(err){
+		res.jsonp(err);
+	});
+};

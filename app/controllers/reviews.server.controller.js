@@ -18,12 +18,15 @@ var AuctionReview = schema.AuctionReview;
 exports.reviews = function(req, res) {
 	console.log(req.query);
 	var itemid = req.query.itemid;
-	Review.findAll({where: {item_id: itemid}}).success(function(reviews){
-		console.log(reviews);
+	// Review.findAll({where: {item_id: itemid}}).success(function(reviews){
+	// 	console.log(reviews);
+	// 	res.jsonp(reviews);
+	// }).error(function(err){
+	// 	res.jsonp(err);
+	// });
+	Review.findAll().then(function(reviews) {
 		res.jsonp(reviews);
-	}).error(function(err){
-		res.jsonp(err);
-	});
+	})
 };
 
 /**
@@ -31,10 +34,13 @@ exports.reviews = function(req, res) {
 */
 exports.auctionreviews = function(req, res) {
 	var auctionid = req.query.auctionid;
-	AuctionReview.findAll({where: {auction_id: auctionid}}).success(function(reviews){
-		console.log(reviews);
-		res.jsonp(reviews);
-	}).error(function(err){
-		res.jsonp(err);
+	// AuctionReview.findAll({where: {auction_id: auctionid}}).success(function(reviews){
+	// 	console.log(reviews);
+	// 	res.jsonp(reviews);
+	// }).error(function(err){
+	// 	res.jsonp(err);
+	// });
+	AuctionReview.findAll().then(function(areviews) {
+		res.jsonp(areviews);
 	});
 };

@@ -32,6 +32,21 @@ AuctionReview.sync({force: false}).then(function() {
 	// 	text: "asdfasdfasdfasdf",
 	// 	post_date: Date.now()
 	// });
+	// AuctionReview.create({
+	// 	poster: "max",
+	// 	text: "This was awesome! I love this item!",
+	// 	post_date: Date.now()
+	// });
+	// AuctionReview.create({
+	// 	poster: "brad",
+	// 	text: "I didn't win this auction, I hate this item!",
+	// 	post_date: Date.now()
+	// });
+	// AuctionReview.create({
+	// 	poster: "neil",
+	// 	text: "When I got this item it was just a box with rocks in it. I love rocks!",
+	// 	post_date: Date.now()
+	// })
 });
 
 schema['AuctionReview'] = AuctionReview;
