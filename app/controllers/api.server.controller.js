@@ -64,3 +64,17 @@ exports.itemSearch = function(req, res) {
 		res.jsonp(err);
 	});
 };
+
+exports.featuredItems = function(req, res) {
+
+	Item.findAll({limit: 4}).then(function(items){
+		res.jsonp(items);
+	})
+}
+
+exports.featuredAuctions = function(req, res) {
+
+	AuctionItem.findAll({limit: 4}).then(function(auctions){
+		res.jsonp(auctions);
+	})
+}

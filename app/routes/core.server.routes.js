@@ -15,4 +15,6 @@ module.exports = function(app) {
 	app.route('/userreport').get(api.getUserReport);
 	app.route('/itemsearch').get(api.itemSearch);
 	app.route('/auctionsearch').get(api.auctionSearch);
+	app.route('/featureditems').get(api.featuredItems);
+	app.route('/featuredauctions').get(api.featuredAuctions);
 };

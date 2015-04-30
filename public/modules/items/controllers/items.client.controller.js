@@ -117,5 +117,14 @@ angular.module('items').controller('ItemsController', ['$scope', '$http', '$stat
 				alert('error');
 			});
 		};
+
+		$scope.findAllCategories = function() {
+			$http.get('/categories').success(function(data, status, headers, config) {
+				console.log(data);
+				$scope.categories = data;
+			}).error(function(data, status, headers, config) {
+				alert('error');
+			});
+		};
 	}
 ]);

@@ -23,5 +23,20 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
 				alert('error');
 			});
 		};
+
+		$scope.featured = function() {
+
+			$http.get('/featureditems').success(function(data, status, headers, config){
+				$scope.featureditems = data;
+			}).error(function(data, status, headers, config){
+				alert('error');
+			});
+
+			$http.get('/featuredauctions').success(function(data, status, headers, config){
+				$scope.featuredauctions = data;
+			}).error(function(data, status, headers, config){
+				alert('error');
+			});
+		};
 	}
 ]);
