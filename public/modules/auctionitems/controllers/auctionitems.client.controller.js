@@ -12,7 +12,7 @@ angular.module('auctionitems').controller('AuctionitemsController', ['$scope', '
 				description: this.description,
 			 	location: this.location,
 			 	buyer_name: this.buyer_name,
-			 	current_bid: this.current_name,
+			 	current_bid: this.current_bid,
 			 	buy_it_now: this.buy_it_now,
 			 	reserve_price: this.reserve_price,
 			 	auction_ended: this.auction_ended,

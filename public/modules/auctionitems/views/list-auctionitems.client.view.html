@@ -4,12 +4,6 @@
     </div>
     <div class="list-group">
         <a data-ng-repeat="auctionitem in auctionitems" data-ng-href="#!/auctionitems/{{auctionitem.id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="auctionitem.created | date:'medium'"></span>
-				by
-				<span data-ng-bind="auctionitem.user.displayName"></span>
-			</small>
 			<h4 class="list-group-item-heading" data-ng-bind="auctionitem.name"></h4>
         </a>
     </div>
