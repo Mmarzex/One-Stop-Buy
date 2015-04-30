@@ -35,7 +35,7 @@
 	 	<h2> Featured Items </h2>
 	 </div>
 	 <div class="list-group">
-	 	<a data-ng-repeat="item in featureditems" data-ng-href="#!/items/{{items.id}}" class="list-group-item">
+	 	<a data-ng-repeat="item in featureditems" data-ng-href="#!/items/{{item.id}}" class="list-group-item">
 	 		<h4 class="list-group-item-heading" data-ng-bind="item.name"></h4>
 	 	</a>
 	 </div>
@@ -44,7 +44,7 @@
 	 	<h2> Featured Auctions </h2>
 	 </div>
 	 <div class="list-group">
-	 	<a data-ng-repeat="auction in featuredauctions" data-ng-href="#!/auctionitems/{{auctionitems.id}}" class="list-group-item">
+	 	<a data-ng-repeat="auction in featuredauctions" data-ng-href="#!/auctionitems/{{auction.id}}" class="list-group-item">
 	 		<h4 class="list-group-item-heading" data-ng-bind="auction.name"></h4>
 	 	</a>
 	 </div>
